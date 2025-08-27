@@ -1,0 +1,20 @@
+# render.yaml
+# This file tells Render how to build and deploy our application.
+
+services:
+  # This defines our main web application service.
+  - type: web
+    name: finsight-app
+    env: python # Specify the environment
+    plan: free # Use the free tier
+    
+    # A list of commands to run when building the project.
+    # This runs before the server starts.
+    buildCommand: |
+      pip install -r requirements.txt
+      python -m spacy download en_core_web_md
+      python train.py
+      
+    # The command to start our web server.
+    # It uses Gunicorn to run the 'app' object from our 'app.py' file.
+    startCommand: "gunicorn app:app"
