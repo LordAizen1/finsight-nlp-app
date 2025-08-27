@@ -9,3 +9,5 @@ nlp_env/
 # Trained model artifacts
 trained_model/
 trained_model_final/
+
+PROJECT_DOCUMENTATION.md
