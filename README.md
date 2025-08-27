@@ -11,6 +11,28 @@ This is a web application that performs Natural Language Processing on financial
 - **Dynamic Legend:** Automatically generates a legend explaining the entity labels found in the text.
 - **Hybrid NLP Pipeline:** The final model loads a custom-trained spaCy pipeline and then adds a rule-based `EntityRuler` on top to create a robust, hybrid system.
 
+### How It Works
+
+This diagram shows the flow of data from the user's browser to the Flask backend and back.
+
+```mermaid
+graph TD
+    subgraph "Browser (Client-Side)"
+        A["User pastes raw text & clicks Analyze"] --> B{JavaScript};
+        B -- "1. POST Request w/ Text" --> C["/analyze API Endpoint"];
+        F["4. JSON Response"] --> G{JavaScript};
+        G --> H["Renders HTML, Sentiment & Legend in UI"];
+    end
+
+    subgraph "Flask Server (Backend)"
+        C -- "Raw Text" --> D["2. Preprocess Text"];
+        D -- "Cleaned Text" --> E("3a. spaCy Pipeline");
+        D -- "Cleaned Text" --> I("3b. VADER Sentiment");
+        E --> J["Generate displacy HTML & Legend Data"];
+        I & J --> F;
+    end
+```
+
 ### Technologies Used
 
 - **Backend:** Python, Flask, spaCy, VADER Sentiment
