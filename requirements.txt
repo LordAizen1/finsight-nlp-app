@@ -1,5 +1,6 @@
 gunicorn
-spacy==3.7.2
+spacy==3.4.4
+blis==0.7.9
 flask==3.0.0
 vaderSentiment==3.3.2
 # Make sure to also download the spaCy model:
