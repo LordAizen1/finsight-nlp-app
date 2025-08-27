@@ -1,0 +1,11 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+nlp_env/
+
+# Trained model artifacts
+trained_model/
+trained_model_final/
