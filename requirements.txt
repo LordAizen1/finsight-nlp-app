@@ -1,0 +1,5 @@
+spacy==3.7.2
+flask==3.0.0
+vaderSentiment==3.3.2
+# Make sure to also download the spaCy model:
+# python -m spacy download en_core_web_md
